@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd">
+	<http:request-config name="sa-event" doc:name="HTTP Request configuration" doc:id="723647b5-bfd5-4c6c-89f0-5b5c5dee03bf" basePath="/api" >
+		<http:request-connection host="0.0.0.0" port="8081" connectionIdleTimeout="3000000" />
+	</http:request-config>
+	<http:request-config name="ysrj-pa" doc:name="HTTP Request configuration" doc:id="4b1d04da-2c60-43d7-8057-2eea7c3c4956" basePath="/api" >
+		<http:request-connection host="0.0.0.0" port="8083" />
+	</http:request-config>
+</mule>

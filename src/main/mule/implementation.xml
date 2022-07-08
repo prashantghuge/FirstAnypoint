@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd">
+	<flow name="deleteEvent" doc:id="c6bcdeb6-98cd-431c-a9f4-8ec28e4a7b80" >
+		<http:request method="DELETE" doc:name="Request" doc:id="78ae9948-bbd1-4a9c-98a2-a6a1d9178ff1" config-ref="sa-event" path="/event">
+			<http:headers ><![CDATA[#[{
+	"admin_id" : attributes.headers.admin_id,
+	"admin_password": attributes.headers.admin_password
+}]]]></http:headers>
+			<http:query-params ><![CDATA[#[{
+	"eventID": attributes.queryParams.eventID
+}]]]></http:query-params>
+		</http:request>
+	</flow>
+	<flow name="implementationFlow" doc:id="a6f899c2-756b-4c02-95b2-905b44604b54" >
+		<http:request method="GET" doc:name="Request" doc:id="7c1e09f5-b57a-4847-979e-edf8e7b5b66a" config-ref="ysrj-pa" path="/deleteuser">
+			<http:headers ><![CDATA[#[{
+	"admin_id" : attributes.headers.admin_id,
+	"admin_password": attributes.headers.admin_password
+}]]]></http:headers>
+			<http:query-params ><![CDATA[#[{
+	"userID": attributes.queryParams.userID
+}]]]></http:query-params>
+		</http:request>
+	</flow>
+</mule>
