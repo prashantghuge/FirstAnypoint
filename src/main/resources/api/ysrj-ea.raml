@@ -1,0 +1,127 @@
+#%RAML 1.0
+title: ysrj-ea
+
+/event:
+  get:
+    description: Get events of perticular user.
+    queryParameters:
+      userID:
+        required: true
+    responses:
+      200:
+        body:
+          application/json:
+            example: !include examples/events.raml
+
+  post:
+    description: Create new Event
+    queryParameters:
+      userID:
+        required: true
+    body:
+      application/json:
+        example: !include examples/event.raml
+    responses:
+      201:
+        body:
+          application/json:
+            example:
+              message: User Created
+
+  delete:
+    description: Delete event by ID
+    queryParameters:
+      eventID:
+        required: true
+    headers:
+      admin_id:
+        required: true
+      admin_password:
+        required: true
+    responses:
+      200:
+        body:
+          application/json:
+            example: Event deleted Successfully
+
+/events:
+  get:
+    description: Get all events
+    headers:
+      admin_id:
+        required: true
+      admin_password:
+        required: true
+    responses:
+      200:
+        body:
+          application/json:
+            example: !include examples/events.raml
+  
+  post:
+    description: Post Multiple Events
+    queryParameters:
+      userID:
+        required: true
+    body:
+      application/json:
+        example: !include examples/events.raml
+    responses:
+      200:
+        body:
+          application/json:
+            example:
+              Events Created
+
+/user:
+  get:
+    description: Get user by ID.
+    queryParameters:
+      userID:
+        required: true
+    responses:
+      200:
+        body:
+          application/json:
+            example: !include examples/user.raml
+
+  post:
+    description: Create new user
+    body:
+      application/json:
+        example: !include examples/user.raml
+    responses:
+      200:
+        body:
+          application/json:
+            example: User Created Sucessfully.
+
+  delete:
+    description: Delete user by ID.
+    headers:
+      admin_id:
+        required: true
+      admin_password:
+        required: true
+    queryParameters:
+      userID:
+        required: true
+    responses:
+      200:
+        body:
+          application/json:
+            example: User deleted Successfully.
+
+/users:
+  get:
+    description: Get All Users.
+    headers:
+      admin_id:
+        required: true
+      admin_password:
+        required: true
+    responses:
+      200:
+        body:
+          application/json:
+            example: !include examples/users.raml
